@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rick and Morty Episodes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #0088cc;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .episode-button {
+            background-color: #0088cc;
+            color: #fff;
+            width: 200px; /* Fixed width for all buttons */
+            padding: 10px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .episode-button:hover {
+            background-color: #005580;
+        }
+
+        .episode-details {
+            display: none;
+        }
+
+        .episode-container.open .episode-details {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<h1>Rick and Morty Episodes</h1>
+
+<form action="" method="GET">
+    <input type="text" name="search" id="searchInput" placeholder="Search episodes by name...">
+    <input type="submit" value="Search">
+</form>
+<ul>
+    {% if episode is defined %}
+        <li class="episode-container" onclick="toggleEpisodeDetails(this)">
+            <button class="episode-button">{{ episode.name }}</button>
+            <div class="episode-details">
+                <strong>ID:</strong> {{ episode.id }}<br>
+                <strong>Name:</strong> {{ episode.name }}<br>
+                <strong>Episodes:</strong>
+                <ul>
+                    {% for episode in episode.episode %}
+                        <li>{{ episode }}</li>
+                    {% endfor %}
+                </ul><br>
+                <strong>Image</strong><br>
+                <img src="{{ episode.image_url }}" alt="{{ episode.name }} Image">
+            </div>
+        </li>
+    {% else %}
+        {% for singleEpisode in episodes %}
+            <li class="episode-container" onclick="toggleEpisodeDetails(this)">
+                <button class="episode-button">{{ singleEpisode.name }}</button>
+                <div class="episode-details">
+                    <strong>ID:</strong> {{ singleEpisode.id }}<br>
+                    <strong>Name:</strong> {{ singleEpisode.name }}<br>
+                    <strong>Episodes:</strong>
+                    <ul>
+                        {% for episode in singleEpisode.episode %}
+                            <li>{{ episode }}</li>
+                        {% endfor %}
+                    </ul><br>
+                    <strong>Image</strong><br>
+                    <img src="{{ singleEpisode.image_url }}" alt="{{ singleEpisode.name }} Image">
+                </div>
+            </li>
+        {% endfor %}
+    {% endif %}
+
+</ul>
+
+<script>
+    function toggleEpisodeDetails(element) {
+        element.classList.toggle("open");
+    }
+</script>
+</body>
+</html>
