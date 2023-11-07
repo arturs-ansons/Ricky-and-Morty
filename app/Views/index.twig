@@ -1,6 +1,8 @@
+{% include 'navbar.twig' %}
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Rick and Morty Episodes</title>
     <style>
         body {
@@ -57,13 +59,17 @@
         }
     </style>
 </head>
+
 <body>
+
 <h1>Rick and Morty Episodes</h1>
+
 
 <form action="" method="GET">
     <input type="text" name="search" id="searchInput" placeholder="Search episodes by name...">
     <input type="submit" value="Search">
 </form>
+
 <ul>
     {% if episode is defined %}
         <li class="episode-container" onclick="toggleEpisodeDetails(this)">

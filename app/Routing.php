@@ -14,12 +14,19 @@ class Routing
     {
         $loader = new FilesystemLoader(__DIR__ . '/Views');
         $twig = new Environment($loader);
+        $twig->addExtension(new VarDumpExtension());
         $apiService = new ApiService(); // Create an instance of ApiService
 
         $dispatcher = simpleDispatcher(function (RouteCollector $r) {
-            $r->addRoute('GET', '/', 'MvcApp\\Controller\\EpisodeController::index');
-            $r->addRoute('GET', '/{id}', 'MvcApp\\Controller\\EpisodeController::show');
+
+                $r->addRoute('GET', '/', 'MvcApp\\Controller\\EpisodeController::index');
+                $r->addRoute('GET', '/{id}', 'MvcApp\\Controller\\EpisodeController::show');
+                $r->addRoute('POST', '/', 'MvcApp\\Controller\\WeatherController::sh');
+
+
         });
+
+
 
         $httpMethod = $_SERVER['REQUEST_METHOD'];
         $uri = rawurldecode($_SERVER['REQUEST_URI']);

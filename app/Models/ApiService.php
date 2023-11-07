@@ -71,5 +71,29 @@ class ApiService
         }
         return $characterImages;
     }
+
+    public function fetchWeather(string $city): ?string {
+        $apiKey = "0c1725f72d445b2b377c34209ba1341c";
+        $url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey";
+
+            $response = $this->client->get($url);
+
+            if ($response->getStatusCode() == 200) {
+                $data = json_decode($response->getBody(), true);
+
+
+                if (isset($data['main']['temp'])) {
+                    $temperature = $data['main']['temp'];
+
+                    $temperatureCelsius = $temperature - 273.15;
+
+                    return round($temperatureCelsius, 2);
+                }
+            }
+
+        return null;
+    }
+
+
 }
 

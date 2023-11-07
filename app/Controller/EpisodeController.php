@@ -28,9 +28,9 @@ class EpisodeController extends BaseController
         $searchQuery = $_GET['search'] ?? null;
 
             $episode = $this->apiService->fetchEpisode($searchQuery);
-            //var_dump($episode);
                 echo $this->twig->render('episode.twig', ['episode' => $episode]);
             }
+
         }
 
 

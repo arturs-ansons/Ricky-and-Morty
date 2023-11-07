@@ -1,3 +1,4 @@
+{% include 'navbar.twig' %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,28 +59,29 @@
     </style>
 </head>
 <body>
+
 <h1>Rick and Morty Episode Images</h1>
 
 <ul>
-    {% if episode is defined %}
-        <li class="episode-container" onclick="toggleEpisodeDetails(this)">
-            <button class="episode-button">{{ episode.name }}</button>
-            <div class="episode-details">
-                <strong>ID:</strong> {{ episode.id }}<br>
-                <strong>Name:</strong> {{ episode.name }}<br>
-                <strong>Date:</strong> {{ episode.air_date }}<br>
-                <ul>
-                    {% for episode in episode.episode %}
-                        <li>{{ episode }}</li>
+        {% if episode is defined %}
+            <li class="episode-container" onclick="toggleEpisodeDetails(this)">
+                <button class="episode-button">{{ episode.name }}</button>
+                <div class="episode-details">
+                    <strong>ID:</strong> {{ episode.id }}<br>
+                    <strong>Name:</strong> {{ episode.name }}<br>
+                    <strong>Date:</strong> {{ episode.air_date }}<br>
+                    <ul>
+                        {% for episode in episode.episode %}
+                            <li>{{ episode }}</li>
+                        {% endfor %}
+                    </ul><br>
+                    <strong>Images</strong><br>
+                    {% for characterImage in episode.characterImg %}
+                        <img src="{{ characterImage }}" alt="{{ episode.name }} Character Image">
                     {% endfor %}
-                </ul><br>
-                <strong>Images</strong><br>
-                {% for characterImage in episode.characterImg %}
-                    <img src="{{ characterImage }}" alt="{{ episode.name }} Character Image">
-                {% endfor %}
-            </div>
-        </li>
-    {% endif %}
+                </div>
+            </li>
+        {% endif %}
 </ul>
 
 <script>
