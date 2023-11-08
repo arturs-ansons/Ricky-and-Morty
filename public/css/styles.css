@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+.navbar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align children to the left */
+}
+
+.navbar p, .navbarTemp p {
+    width: 100%; /* Ensure both text paragraphs take the full width of their respective divs */
+    margin: 0; /* Remove any default margin */
+    padding: 10px;
+}
+
+
+h1 {
+    color: #0088cc;
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.episode-button {
+    background-color: #0088cc;
+    color: #fff;
+    width: 200px; /* Fixed width for all buttons */
+    padding: 10px 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    display: block;
+    margin: 0 auto;
+}
+
+.episode-button:hover {
+    background-color: #005580;
+}
+
+.episode-details {
+    display: none;
+}
+
+.episode-container.open .episode-details {
+    display: block;
+}

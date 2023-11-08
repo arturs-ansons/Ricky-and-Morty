@@ -2,25 +2,22 @@
 <html>
 <head>
 </head>
-<style>
-    .navbar {
-        position: absolute;
-        right: 20px; /* Adjust the value as needed */
-        top: 20px; /* Adjust the value as needed */
-    }
-</style>
 
-<div class="navbar">
-    <form method="POST">
-        <input type="text" name="city" id="city" placeholder="Search city weather">
-        <input type="submit" value="City">
-    </form>
-    {% if temperatureCelsius is not null %}
-        <p>{{ temperatureCelsius }}°C</p>
-    {% else %}
-        <p>Please enter a city and click "City" to retrieve weather information.</p>
-    {% endif %}
+<div class="navbar-container">
+        <div class="navbar">
+                <p>Time London: {{ currentTimeInLondon }}</p>
+        </div>
+        <div class="navbarTemp">
+                <p>Temp London: {{ temperatureCelsius }}° C</p>
+        </div>
 </div>
+
+
+
+
+
+
+
 
 </body>
 </html>

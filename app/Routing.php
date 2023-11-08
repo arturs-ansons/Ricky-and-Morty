@@ -18,10 +18,10 @@ class Routing
         $apiService = new ApiService(); // Create an instance of ApiService
 
         $dispatcher = simpleDispatcher(function (RouteCollector $r) {
+            //$r->addRoute('GET', '/weather', 'MvcApp\\Controller\\WeatherController::sh');
+            $r->addRoute('GET', '/', 'MvcApp\\Controller\\EpisodeController::index');
+            $r->addRoute('GET', '/{id}', 'MvcApp\\Controller\\EpisodeController::show');
 
-                $r->addRoute('GET', '/', 'MvcApp\\Controller\\EpisodeController::index');
-                $r->addRoute('GET', '/{id}', 'MvcApp\\Controller\\EpisodeController::show');
-                $r->addRoute('POST', '/', 'MvcApp\\Controller\\WeatherController::sh');
 
 
         });
